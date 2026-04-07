@@ -1,12 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Drivers Home Page</h1>
-  <p>Welcome to Drivers!</p>
-  <ul>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Driver</th>
+    </tr>
+  </thead>
+  <tbody>
     {% for driver in driver_list %}
-
-    <li><a href="{% url 'taxi:driver-detail' driver.id %}">{{ driver.first_name }} - {{ driver.last_name }}</a></li>
-
+      <tr>
+        <td>{{ driver.id }}</td>
+        <td>
+          <a href="{% url 'taxi:driver-detail' driver.id %}">
+            {{ driver.username }}
+          </a>
+        </td>
+      </tr>
     {% endfor %}
-  </ul>
+  </tbody>
+</table>
 {% endblock %}
